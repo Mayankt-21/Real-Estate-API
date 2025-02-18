@@ -32,7 +32,7 @@ Start `node server.js` in your terminal, your server should start running. To he
 3. POST```/bookProperty```
   a. as in snapshot <br>
   b. POST req body contains all the `Booking` model entries - `userId`, `propertyId` ( here, `status [default : 'Pending']`  and `bookingDate [default : current Date]` are not set as they at their default state)<br>
-  c. This request too is first validated by a middleware which all the entries are filled, `propertyId` is valid and the property has `availbleUnits > 0`)<br>
+  c. This request too is first validated by a middleware to check if there are any null entries, `propertyId` is valid and the property has `availbleUnits > 0`<br>
   d. The request after successfull checks moves to `bookProperty` controller, from `bookingRoutes.js - POST('/')` where it fetches the Property details from `PropertyId`, checks if it is a valid Property that exists, and `availableUnits > 0`)<br>
   e. A mock Payment is set using `setTimeout`[10 secs] that changes the `Booking` status from `'Pending -> Confirmed` and `availableUnits` counts is `decreased by 1` from `Property`.)<br>
   f. A new Booking is registered after 10seconds - mocked for payment, it is assumed it takes 10 seconds for the payment where it returns `'Payment Processing'` and after 10seconds (when the payment is complete) it changes the status to `'Payment Completed. Booking Done'`.)<br>
