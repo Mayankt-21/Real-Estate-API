@@ -39,6 +39,8 @@ Start `node server.js` in your terminal, your server should start running. To he
 
 ![POST/bookProperty](https://github.com/user-attachments/assets/2785a00d-0b88-4d6c-9222-f818c312ca74)
 
+After 10 seconds `Pending -> Confirmed`
+
 ![Payment Processing -> Payment Complete](https://github.com/user-attachments/assets/01376756-8949-4096-81a2-05d831a73efc)
 
 
