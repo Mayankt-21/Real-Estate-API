@@ -23,19 +23,19 @@ Start `node server.js` in your terminal, your server should start running. To he
 2. GET```/properties```
 
   a. as in the snapshot <br>
-  b. GET request sends the request to `getProperty` controller, from `propertyRoutes - GET('/')` to fetch the properties
-  c. The `getProperty` controller fetches all the properties where `avaialbleUnits : ${gt : 0}` (i.e., Properties whose `availableUnits > 0`)
-  d. Cannot use Middleware - As the booking is made, availableUnits count is decreased and it will be difficult to keep a check
+  b. GET request sends the request to `getProperty` controller, from `propertyRoutes - GET('/')` to fetch the properties)<br>
+  c. The `getProperty` controller fetches all the properties where `avaialbleUnits : ${gt : 0}` (i.e., Properties whose `availableUnits > 0`))<br>
+  d. Cannot use Middleware - As the booking is made, availableUnits count is decreased and it will be difficult to keep a check)<br>
 
 ![GET/properties](https://github.com/user-attachments/assets/a596536a-2f20-477f-947d-dd98af967a71)
 
 3. POST```/bookProperty```
   a. as in snapshot <br>
-  b. POST req body contains all the `Booking` model entries - `userId`, `propertyId` ( here, `status [default : 'Pending']`  and `bookingDate [default : current Date]` are not set as they at their default state)
-  c. This request too is first validated by a middleware which all the entries are filled, `propertyId` is valid and the property has `availbleUnits > 0`
-  d. The request after successfull checks moves to `bookProperty` controller, from `bookingRoutes.js - POST('/')` where it fetches the Property details from `PropertyId`, checks if it is a valid Property that exists, and `availableUnits > 0`
-  e. A mock Payment is set using `setTimeout`[10 secs] that changes the `Booking` status from `'Pending -> Confirmed` and `availableUnits` counts is `decreased by 1` from `Property`.
-  f. A new Booking is registered after 10seconds - mocked for payment, it is assumed it takes 10 seconds for the payment where it returns `'Payment Processing'` and after 10seconds (when the payment is complete) it changes the status to `'Payment Completed. Booking Done'`.
+  b. POST req body contains all the `Booking` model entries - `userId`, `propertyId` ( here, `status [default : 'Pending']`  and `bookingDate [default : current Date]` are not set as they at their default state)<br>
+  c. This request too is first validated by a middleware which all the entries are filled, `propertyId` is valid and the property has `availbleUnits > 0`)<br>
+  d. The request after successfull checks moves to `bookProperty` controller, from `bookingRoutes.js - POST('/')` where it fetches the Property details from `PropertyId`, checks if it is a valid Property that exists, and `availableUnits > 0`)<br>
+  e. A mock Payment is set using `setTimeout`[10 secs] that changes the `Booking` status from `'Pending -> Confirmed` and `availableUnits` counts is `decreased by 1` from `Property`.)<br>
+  f. A new Booking is registered after 10seconds - mocked for payment, it is assumed it takes 10 seconds for the payment where it returns `'Payment Processing'` and after 10seconds (when the payment is complete) it changes the status to `'Payment Completed. Booking Done'`.)<br>
 
 ![POST/bookProperty](https://github.com/user-attachments/assets/2785a00d-0b88-4d6c-9222-f818c312ca74)
 
